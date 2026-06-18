@@ -12,6 +12,9 @@
     <meta property="og:image" content="https://rombensonn.github.io/master-shin-landing/images/master-shin-01.webp">
     <meta property="og:url" content="https://rombensonn.github.io/master-shin-landing/">
     <meta name="theme-color" content="#111827">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="images/master-shin-01.webp" as="image">
     <link rel="stylesheet" href="css/styles.css">
@@ -349,15 +352,31 @@
 
     <section class="section trust" aria-labelledby="trust-title">
         <div class="container trust-grid">
-            <div>
-                <p class="eyebrow">Почему доверяют</p>
-                <h2 id="trust-title">Не большой сетевой поток, а понятная мастерская, где делают аккуратно</h2>
-                <p>В отзывах повторяются одни и те же причины: мастер объясняет, работает быстро, держит бокс в порядке и не навязывает лишнее. Для срочного ремонта шин это важнее громких обещаний.</p>
+            <div class="trust-visual" aria-label="Показатели доверия">
+                <div class="trust-mascot" aria-hidden="true">5.0</div>
+                <div class="trust-window">
+                    <p>Мастер шин</p>
+                    <div class="trust-tabs">
+                        <span>ремонт</span>
+                        <span>шиномонтаж</span>
+                        <span>балансировка</span>
+                    </div>
+                </div>
+                <div class="trust-stats">
+                    <div><strong>5.0</strong><span>рейтинг</span></div>
+                    <div><strong>77</strong><span>отзывов</span></div>
+                    <div><strong>131</strong><span>оценка на Яндекс.Картах</span></div>
+                </div>
             </div>
-            <div class="trust-stats" aria-label="Показатели доверия">
-                <div><strong>5.0</strong><span>рейтинг</span></div>
-                <div><strong>77</strong><span>отзывов</span></div>
-                <div><strong>100%</strong><span>позитив по шиномонтажу в аспектах Яндекса</span></div>
+            <div class="trust-copy">
+                <p class="eyebrow">Почему доверяют</p>
+                <h2 id="trust-title">Понятный ремонт шин без лишних работ</h2>
+                <p>В отзывах повторяются одни и те же причины: мастер объясняет, работает быстро, держит бокс в порядке и не навязывает лишнее. Для срочного ремонта шин это важнее громких обещаний.</p>
+                <div class="trust-points" aria-label="Ключевые преимущества">
+                    <span>Аккуратный ремонт без лишних работ</span>
+                    <span>Запись по времени и быстрый ответ</span>
+                    <span>Чистый бокс, понятная диагностика</span>
+                </div>
             </div>
         </div>
     </section>
