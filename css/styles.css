@@ -26,12 +26,14 @@
 }
 
 html {
+    overflow-x: clip;
     scroll-behavior: smooth;
     background: var(--bg);
 }
 
 body {
     margin: 0;
+    overflow-x: clip;
     font-family: var(--body);
     font-weight: 400;
     color: var(--text);
@@ -149,6 +151,12 @@ textarea {
     text-transform: uppercase;
 }
 
+.nav-panel {
+    display: flex;
+    align-items: center;
+    gap: clamp(22px, 4vw, 54px);
+}
+
 .nav a,
 .header-phone {
     text-decoration: none;
@@ -178,6 +186,42 @@ textarea {
     border-color: var(--cyan);
     color: var(--ink);
     background: var(--cyan);
+}
+
+.menu-toggle {
+    display: none;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-direction: column;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 0;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.menu-toggle span + span {
+    margin-top: 0;
+}
+
+.site-header.is-menu-open .menu-toggle span:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.site-header.is-menu-open .menu-toggle span + span {
+    transform: translateY(-4px) rotate(-45deg);
 }
 
 .hero {
@@ -776,6 +820,7 @@ h1 {
 }
 
 .trust {
+    overflow: hidden;
     color: var(--ink);
     background: #f7f8fb;
 }
@@ -833,7 +878,7 @@ h1 {
     border: 1px solid rgba(7, 8, 10, 0.06);
     border-radius: 28px;
     padding: clamp(24px, 3vw, 38px);
-    overflow: visible;
+    overflow: hidden;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.2)),
         #f7eaff;
@@ -1110,6 +1155,7 @@ details {
 }
 
 .photos {
+    overflow: hidden;
     color: var(--ink);
     background: #f7f8fb;
 }
@@ -1283,15 +1329,51 @@ iframe {
 
 @media (max-width: 920px) {
     .site-header {
-        align-items: flex-start;
+        align-items: center;
         flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        margin-left: auto;
+    }
+
+    .nav-panel {
+        order: 3;
+        display: none;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 14px;
+    }
+
+    .site-header.is-menu-open .nav-panel {
+        display: grid;
+        gap: 14px;
     }
 
     .nav {
-        order: 3;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         width: 100%;
-        overflow-x: auto;
-        padding-top: 4px;
+        overflow: visible;
+        padding-top: 0;
+    }
+
+    .nav a {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius);
+        padding: 0 14px;
+        background: rgba(255, 255, 255, 0.035);
+    }
+
+    .header-phone {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero {
@@ -1357,11 +1439,21 @@ iframe {
     }
 
     .brand {
-        width: 100%;
+        width: auto;
+        min-width: 0;
+    }
+
+    .brand-mark {
+        display: none;
+    }
+
+    .brand strong {
+        font-size: 17px;
     }
 
     .brand small {
         color: rgba(255, 255, 255, 0.58);
+        font-size: 12px;
     }
 
     .hero {
@@ -1403,7 +1495,8 @@ iframe {
 
     h1 {
         max-width: 100%;
-        font-size: clamp(40px, 11vw, 58px);
+        font-size: clamp(30px, 7.6vw, 36px);
+        line-height: 1.06;
     }
 
     .hero-lead {

@@ -1,10 +1,38 @@
 (function () {
+    var header = document.querySelector('.site-header');
+    var menuToggle = document.querySelector('.menu-toggle');
+    var navPanel = document.getElementById('primary-menu');
+
+    if (header && menuToggle && navPanel) {
+        var closeMenu = function () {
+            header.classList.remove('is-menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-label', 'Открыть меню');
+        };
+
+        menuToggle.addEventListener('click', function () {
+            var isOpen = header.classList.toggle('is-menu-open');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            menuToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+        });
+
+        navPanel.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    }
+
     var form = document.querySelector('.lead-form');
-    var isStaticForm = form && form.dataset.staticForm === 'true';
     if (!form) {
         return;
     }
 
+    var isStaticForm = form.dataset.staticForm === 'true';
     var status = form.querySelector('.form-status');
     var serviceSelect = form.querySelector('[name="service"]');
     var submitButton = form.querySelector('[type="submit"]');
@@ -84,4 +112,3 @@
             });
     });
 })();
-
